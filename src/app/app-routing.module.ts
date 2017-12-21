@@ -28,8 +28,9 @@ const appRoutes: Routes = [
       { path: 'dashboard', component: DashboardComponent, data: {}, canActivate: [] },
 
       { path: 'admin', data: { roles: [] }, canActivate: [AuthGuardService], children: [
+        { path: '', pathMatch: 'full', redirectTo: 'users'},
         { path: 'users', data: {}, canActivate: [], children: [
-          { path: '', component: AdminUserComponent },
+          { path: '', pathMatch: 'full', component: AdminUserComponent },
           { path: 'add-user', component: AddUserComponent }
         ]},
       ]}

@@ -14,6 +14,9 @@ export class AuthAutoRedirectService implements CanActivate{
         this.router.navigate(['/', 'secure']);
         return false;
       }
-      else return true;
+      else {
+        console.log('cacaboundin')
+        return true;
+      }
   }
 }

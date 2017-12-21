@@ -109,6 +109,12 @@ export class WrapperComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
+  menuItemClicked(){
+    if(this.navMode === 'over'){
+      this.sideMenuService.closeMenu();
+    }
+  }
+
   toggleMenu(){
     this.sideMenuService.toggleMenu();
   }
