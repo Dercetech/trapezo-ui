@@ -3,6 +3,7 @@ export interface AppConfig {
   API: {
     ROOT: string,
     AUTHENTICATE: string,
+    USERS: string,
     [key: string]: string,
   };
 

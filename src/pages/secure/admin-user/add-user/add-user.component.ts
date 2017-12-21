@@ -9,7 +9,7 @@ import {ToolbarService} from "../../../../commons/wrapper/services/toolbar.servi
 })
 export class AddUserComponent implements OnInit, BroadcastTitle {
 
-  title:string = 'default page';
+  title:string = 'add user';
 
   showLeftButton:boolean = true;
   showRightButton:boolean = true;

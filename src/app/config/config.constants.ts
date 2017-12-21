@@ -8,7 +8,8 @@ export const APP_DI_CONFIG: AppConfig = {
 
   API: {
     ROOT: apiEndpoint,
-    AUTHENTICATE: apiEndpoint + '/authenticate'
+    AUTHENTICATE: apiEndpoint + '/authenticate',
+    USERS: apiEndpoint + '/users',
   },
 
   COLLAPSE_MENU_UNDER: 960,

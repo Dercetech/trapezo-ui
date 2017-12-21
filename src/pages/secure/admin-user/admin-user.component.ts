@@ -2,6 +2,8 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {BroadcastTitle} from "../../../commons/wrapper/interfaces/title-broadcast";
 import {ToolbarService} from "../../../commons/wrapper/services/toolbar.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {UsersService} from "../../../commons/users/services/users.service";
+import {User} from "../../../commons/users/interfaces/user";
 
 @Component({
   selector: 'app-admin-user',
@@ -16,10 +18,12 @@ export class AdminUserComponent implements OnInit, BroadcastTitle {
   showRightButton:boolean = true;
 
   constructor(private router:Router,
-              private activatedRoute:ActivatedRoute,
-              @Inject(ToolbarService) private toolbarService: ToolbarService) { }
+              private activatedRoute: ActivatedRoute,
+              @Inject(ToolbarService) private toolbarService: ToolbarService,
+              @Inject(UsersService) public usersService: UsersService) { }
 
   ngOnInit() {
+    this.usersService.reloadUsers();
   }
 
   broadcastTitle():void{
@@ -28,6 +32,10 @@ export class AdminUserComponent implements OnInit, BroadcastTitle {
 
   isSubmitButtonDisabled():boolean{
     return false;
+  }
+
+  formatRoles(user:User){
+    return (user && user.roles) ? user.roles.join(', ') : 'n/a';
   }
 
   onAdd(){

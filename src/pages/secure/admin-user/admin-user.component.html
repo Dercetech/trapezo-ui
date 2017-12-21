@@ -15,7 +15,7 @@
 
 <div class="content-body">
 
-  <mat-card>
+  <mat-card class="min-height">
 
     <!-- Desktop only -->
 
@@ -42,7 +42,23 @@
 
     </mat-card-title>
 
-    <p>See the component. Toolbar buttons can be disabled and setting showLeftButton to false allows, by means of CSS, to display the menu button (aka hamburger).</p>
+    <table class="table table-selectable-rows" [class.table-hover]="true" [class.table-striped]="false" [class.table-condensed]="false" [class.table-bordered]="false">
+      <thead>
+      <tr>
+        <th>username</th>
+        <th>roles</th>
+        <th>actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let entry of (usersService.users$ | async)">
+        <td>{{entry.user}}</td>
+        <td>{{ formatRoles(entry) }}</td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
+
   </mat-card>
 
 </div>

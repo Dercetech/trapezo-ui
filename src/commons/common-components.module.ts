@@ -13,6 +13,8 @@ import {LoadingOverlayComponent} from "./widgets/loading-overlay/loading-overlay
 import {InterfaceService} from "./wrapper/services/interface.service";
 import {SideMenuService} from "./wrapper/services/side-menu.service";
 import {ToolbarService} from "./wrapper/services/toolbar.service";
+import {UsersService} from "./users/services/users.service";
+
 import {WrapperComponent} from "./wrapper/components/wrapper/wrapper.component";
 import {SecondaryToolbarComponent} from "./wrapper/components/secondary-toolbar/secondary-toolbar.component";
 
@@ -47,7 +49,9 @@ export class CommonComponentsModule{
       providers:[
         InterfaceService,
         SideMenuService,
-        ToolbarService
+        ToolbarService,
+
+        UsersService
       ]
     }
   }
