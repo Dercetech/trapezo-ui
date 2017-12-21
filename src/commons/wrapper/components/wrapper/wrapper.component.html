@@ -5,13 +5,13 @@
 
     <div class="width-hack"></div>
     <div class="overlap-hack" fxHide.lt-md></div>
-    <h1 (click)="onLogoClicked()">TRAPEZO</h1>
+    <h1 (click)="onLogoClicked(); toggleMenu()">TRAPEZO</h1>
     <!--<div routerLink="dashboard" class="trapezo-logo logo-180"></div>-->
 
     <div class="nav-item">
       <h3>administration</h3>
       <ul>
-        <li><a routerLink="admin/users"><i class="fa fa-users" aria-hidden="true"></i>users</a></li>
+        <li><a routerLink="admin/users" (click)="toggleMenu()"><i class="fa fa-users" aria-hidden="true"></i>users</a></li>
       </ul>
     </div>
 
