@@ -26,13 +26,15 @@ export class WrapperComponent implements OnInit, OnDestroy, AfterViewInit {
   shouldStartOpened:boolean = false;
 
   // Toolbar
-  showMenuButton:boolean = true;
   toolbarTitle:string;
+  showMenuButton:boolean = true;
+  showNotifications:boolean = true;
+  showMessages:boolean = true;
 
   @ViewChild('sidenav') sidenav:MatSidenav;
 
   private subscriptions:Subscription[] = [];
-  
+
   constructor(private router: Router,
               @Inject(APP_CONFIG) private config: AppConfig,
               @Inject(InterfaceService) private interfaceService: InterfaceService,
@@ -107,8 +109,11 @@ export class WrapperComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-
   toggleMenu(){
     this.sideMenuService.toggleMenu();
+  }
+
+  onLogoClicked(){
+    this.router.navigate(['/', 'secure', 'dashboard']);
   }
 }

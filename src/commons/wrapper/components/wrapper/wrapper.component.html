@@ -5,13 +5,13 @@
 
     <div class="width-hack"></div>
     <div class="overlap-hack" fxHide.lt-md></div>
-    <h1>TRAPEZO</h1>
-    <!--<div class="stampify-logo logo-180"></div>-->
+    <h1 (click)="onLogoClicked()">TRAPEZO</h1>
+    <!--<div routerLink="dashboard" class="trapezo-logo logo-180"></div>-->
 
     <div class="nav-item">
       <h3>administration</h3>
       <ul>
-        <li><a routerLink="dashboard"><i class="fa fa-table" aria-hidden="true"></i>captable</a></li>
+        <li><a routerLink="dashboard"><i class="fa fa-table" aria-hidden="true"></i>roles</a></li>
         <li><a routerLink="dashboard"><i class="fa fa-check-square-o" aria-hidden="true"></i>partner agreement</a></li>
       </ul>
     </div>
@@ -44,17 +44,18 @@
           <div routerLink="dashboard" class="toolbar-item icon-only"><i class="material-icons">home</i></div>
 
           <!-- Notifications -->
-          <div class="toolbar-item icon-only" [matMenuTriggerFor]="menuNotifications">
+          <div *ngIf="showNotifications" class="toolbar-item icon-only" [matMenuTriggerFor]="menuNotifications">
             <i class="material-icons">notifications_active</i><span class="badge">0</span>
           </div>
 
           <!-- Mail -->
-          <div class="toolbar-item icon-only" [matMenuTriggerFor]="menuMail"><i class="material-icons">email</i></div>
+          <div *ngIf="showMessages" class="toolbar-item icon-only" [matMenuTriggerFor]="menuMail"><i class="material-icons">email</i></div>
 
-          <!-- User menu -->
-          <div class="toolbar-item icon-only">
-            <img class="avatar" src="assets/img/avatars/noavatar.png">
-          </div>
+          <!-- User menu with profile picture -->
+          <div *ngIf="false" class="toolbar-item icon-only" [matMenuTriggerFor]="menuUser"><img class="avatar" src="assets/img/avatars/noavatar.png"></div>
+
+          <!-- User menu without profile picture -->
+          <div *ngIf="true" class="toolbar-item icon-only" [matMenuTriggerFor]="menuUser"><i class="material-icons">person</i></div>
 
         </div>
       </mat-toolbar-row>
@@ -68,7 +69,7 @@
       <!-- Footer: After scroll (for desktop) -->
       <div *ngIf="!isMobileMode" class="footer after-scroll">
         <div class="contents">
-          copyright <span class="brand" style="margin-left: 8px; font-weight:bold;letter-spacing:0.2em;">STAMPIFY</span>
+          copyleft <span class="brand" style="margin-left: 8px; font-weight:bold;letter-spacing:0.2em;">Dercetech</span>
           2017
           <i class="fa fa-linkedin" aria-hidden="true"></i>
           <i class="fa fa-facebook-official" aria-hidden="true"></i>
@@ -107,9 +108,39 @@
 
 </mat-sidenav-container>
 
+<mat-menu #menuUser="matMenu" [overlapTrigger]="false" xPosition="before" class="toolbar-menus">
+  <div class="toolbar-header">
+    user menu
+  </div>
+  <mat-list>
+
+    <mat-list-item class="toolbar-menu-item disabled">
+      <mat-icon matListIcon>account_balance_wallet</mat-icon>
+      <h3 matLine>520 Stamps</h3>
+      <p matLine><span class="sub">purchase Stamps</span></p>
+    </mat-list-item>
+
+    <mat-list-item class="toolbar-menu-item disabled">
+      <mat-icon matListIcon>settings</mat-icon>
+      <h3 matLine>profile & settings</h3>
+      <p matLine><span class="sub"></span></p>
+    </mat-list-item>
+
+    <mat-list-item class="toolbar-menu-item" (click)="onLoggout()">
+      <mat-icon matListIcon>exit_to_app</mat-icon>
+      <h3 matLine>disconnect</h3>
+      <p matLine><span class="sub"></span></p>
+    </mat-list-item>
+
+  </mat-list>
+  <div class="toolbar-footer">
+    ...
+  </div>
+
+</mat-menu>
 
 <mat-menu #menuNotifications="matMenu" [overlapTrigger]="false" xPosition="before"
-          class="toolbar-menus guided-tour-desktop-notification-menu">
+          class="toolbar-menus">
   <div class="toolbar-header">
     notifications & open tasks
   </div>

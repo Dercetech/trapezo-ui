@@ -33,6 +33,10 @@ mat-card{
   // example: see wrapper component's popup toolbar menus
   .toolbar-menus{
 
+    &.mat-menu-panel{
+      min-width:200px;
+    }
+
     .toolbar-header{
       text-align: center;
       font-size: 12px;

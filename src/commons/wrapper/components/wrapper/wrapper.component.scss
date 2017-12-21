@@ -46,6 +46,7 @@
       }
 
       h1{
+        cursor:pointer;
         text-align: center;
         font-variant: small-caps;
         font-size: 1.6em;
@@ -135,6 +136,7 @@
             cursor: pointer;
 
             &.icon-only{
+              //max-height: 40px;
               margin-right: 32px;
             }
 

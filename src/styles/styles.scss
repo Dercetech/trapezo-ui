@@ -10,12 +10,18 @@ body{
   height: 100vh;
 }
 
-a{
-  text-decoration: none;
+h3{
+  line-height: 16px;
 }
+
+*:focus {outline:0;}
 
 p{
   line-height: 1.5em;
+}
+
+a{
+  text-decoration: none;
 }
 
 .text-center{
