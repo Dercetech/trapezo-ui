@@ -1,0 +1,46 @@
+@import '~@angular/material/theming';
+
+@mixin material-theme($theme) {
+
+  $primary: map-get($theme, primary);
+  $primary-accent: map-get($primary, contrast);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+
+  .toolbar-menus{
+
+    .toolbar-header{
+      color: #666;
+      background-color: #F0F0F0;
+    }
+
+    .toolbar-footer{
+      border-top-color: #EEE;
+      color: grey;
+    }
+
+    .toolbar-menu-item{
+
+      &:not(.disabled){
+
+        color: grey;
+
+        &:hover{
+          background-color: #FAFAFA;
+        }
+      }
+
+      &.disabled{
+        color: lightgray;
+      }
+
+      .mat-list-item-content{
+        height: 64px!important;
+      }
+
+      border-bottom-color: #EEE;
+
+    }
+  }
+}

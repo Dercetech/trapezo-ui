@@ -1,0 +1,35 @@
+* {
+  //font-family: "Atari ST 8x16 System Font";
+}
+
+.fadeInLoad {
+  animation: fadeInLoad 2s;
+}
+@keyframes fadeInLoad {
+  0% {
+    opacity:0;
+  }
+  66% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+
+.fadeOutLoad {
+  opacity: 0;
+  animation: fadeOutLoad 2s;
+}
+@keyframes fadeOutLoad {
+  0% {
+    opacity:1;
+  }
+  66% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}

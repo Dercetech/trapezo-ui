@@ -1,0 +1,255 @@
+@import '../../../../styles/variables';
+
+:host{
+
+  // Takes the full width - parent is flex row
+  flex: 0 0 100%;
+  height: 100%;
+
+  // Whole page wrapper
+  mat-sidenav-container{
+
+    // Takes the full width - parent is flex row
+    flex: 0 0 100%;
+    height: 100%;
+
+    // Itself is a flex container
+    display: flex;
+    flex-direction: row;
+
+    // The side menu itself
+    .nav-menu{
+
+      // Sidenav has a fixed width
+      flex: 0 0 200px;
+
+      height: 100%;
+
+      display: flex;
+      flex-direction: column;
+
+      z-index: 5;
+      overflow: visible; // TODO fix hack, see ".overlap-hack"
+
+      // TODO how comes?! Seems linked to side-nav material component itself
+      .width-hack{
+        width: 200px
+      }
+
+      // TODO find a clean way to have: box-shadow from toolbar and allow side menu to be responsive (fix in branch feat-outdent)
+      .overlap-hack{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 216px;
+        height: 63px;
+      }
+
+      h1{
+        text-align: center;
+        font-variant: small-caps;
+        font-size: 1.6em;
+        letter-spacing: 0.30em;
+        line-height: 1.15em;
+        margin: 0px;
+        padding: 17px 0 18px 0;
+        z-index: 10; // TODO fix hack, see ".overlap-hack"
+      }
+
+      .nav-item{
+        flex-grow: 0;
+        flex-shrink: 0;
+
+        > h3{
+          border: none;
+          letter-spacing: 1px;
+          line-height: 24px;
+          text-transform: uppercase;
+          margin: 0;
+          padding: $SIDE_MENU_H3_PADDING;
+        }
+
+        > ul{
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+
+          > li{
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            margin: 0;
+            padding: 0;
+
+            .fa{
+              margin-right: 16px;
+              font-size: 1.2em;
+            }
+
+            > a {
+              box-sizing: border-box;
+              display: block;
+              font-size: 14px;
+              // font-weight: 400;
+              line-height: 47px;
+              text-decoration: none;
+              transition: all .3s;
+              padding: 0 16px;
+              position: relative;
+            }
+          }
+        }
+      }
+    }
+
+    // The main column
+    mat-sidenav-content{
+
+      // Take up the rest of the horizontal space
+      flex: 1 1 100%;
+
+      // Contents will extend as needed and will stack vertically
+      display: flex;
+      flex-direction: column;
+
+      // Top toolbar
+      mat-toolbar{
+
+        z-index: 10;
+
+        // Don't resize
+        flex: 0 0 inherit;
+
+        .toolbar-title{
+          font-variant: small-caps;
+          font-weight: 800;
+          letter-spacing: 0.25em;
+        }
+
+        .toolbar-controls{
+          display: flex;
+          align-items: center;
+
+          font-size: 0.75em;
+
+          > .toolbar-item{
+            cursor: pointer;
+
+            &.icon-only{
+              margin-right: 32px;
+            }
+
+            &.menu-toggle{
+              padding-top: 8px;
+              .material-icons{
+                font-size: 2.2em;
+              }
+            }
+
+            .material-icons{
+              margin-top: 6px;
+            }
+          }
+        }
+      }
+
+      // Content should be scrollable in case it overflow
+      > .page-wrapper{
+
+        // Grow, shrink if needed, but take all available space
+        flex: 1 1 100%;
+
+        display: flex;
+        flex-direction: column;
+
+        overflow-y: hidden;
+        overflow-x: hidden;
+
+        > ::ng-deep router-outlet + *:not(.footer)
+        {
+          flex: 1 1 100%;
+          display: flex;
+          flex-direction:column;
+
+          // Mobile first: only scroll on desktop / ipad horizontal
+          @media (min-width: $MOBILE_DISPLAY_UNDER) {
+            display: block;
+          }
+        }
+
+        ::ng-deep .content-body{
+
+          flex: 1 1 100%;
+          overflow-y: scroll;
+          overflow-x: hidden;
+
+          // Mobile first: only scroll on desktop / ipad horizontal
+          // Mobile first: card only appears on desktop format
+          @media (min-width: $MOBILE_DISPLAY_UNDER) {
+            overflow-y: auto;
+            overflow-x: hidden;
+
+            padding: 16px 32px;
+          }
+        }
+
+        // Mobile first: only scroll on desktop / ipad horizontal
+        @media (min-width: $MOBILE_DISPLAY_UNDER) {
+          overflow-y: scroll;
+          overflow-x: hidden;
+        }
+      }
+
+      .footer{
+        flex: 0 0 42px;
+
+        &.as-fixed{
+          display: none;
+        }
+
+        &.after-scoll{
+          margin-top: auto;
+          // display: $FOOTER_SCROLL_DISPLAY;
+        }
+
+        &.footer-mobile{
+          flex: 0 0 5vh;
+          display:flex;
+          flex-direction: row;
+
+          //padding-top: 0.5vh;
+          //padding-bottom: 0.5vh;
+
+          .toolbar-item{
+            border-top: solid 1vh transparent;
+            border-bottom: solid 1vh transparent;
+            cursor: pointer;
+            flex: 1 1 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &:not(:last-child){
+            }
+          }
+        }
+
+        .fa{
+          margin-left: 12px;
+        }
+
+        .brand{
+          margin-left: 8px;
+          font-weight:bold;
+          letter-spacing:0.2em;
+        }
+
+        > .contents{
+          text-align: center;
+          margin-top: 14px;
+          font-size: 0.8em;
+        }
+      }
+
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<mat-toolbar class="mat-elevation-z6 secondary">
+  <mat-toolbar-row>
+    <div class="toolbar-item menu-button">
+      <ng-content select=".left-button"></ng-content>
+      <i class="material-icons default-button" (click)="toggleMenu()">menu</i>
+    </div>
+
+    <div class="toolbar-item title">
+      {{title}}
+    </div>
+
+    <div class="toolbar-item" fxFlex="0 0 48px">
+      <ng-content select=".right-button"></ng-content>
+    </div>
+    <span></span>
+  </mat-toolbar-row>
+</mat-toolbar>

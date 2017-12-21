@@ -1,0 +1,94 @@
+// example: see login component
+.wrapper{
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+////////////////////////////////////////////////
+// material helper classes /////////////////////
+
+mat-card{
+  &.min-height{
+    min-height: 66vh;
+  }
+
+  &.full-height{
+    height: 100%;
+  }
+}
+
+
+// material helper classes /////////////////////
+///////////////////////////////////////////////
+
+
+////////////////////////////////////////////////
+// Material CDK classes ////////////////////////
+
+// Hint: sibling HTML element to app-root is created for these
+
+.cdk-overlay-container{
+
+  // example: see wrapper component's popup toolbar menus
+  .toolbar-menus{
+
+    .toolbar-header{
+      text-align: center;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 10px 0;
+    }
+
+    .toolbar-footer{
+      text-align: center;
+      font-size: 12px;
+      font-weight: bold;
+      color: #333;
+      padding: 8px 0;
+      border-top-style: solid;
+      border-top-width:1px;
+    }
+
+    .mat-menu-content{
+      padding-top:0px;
+      padding-bottom:0px;
+    }
+
+    .mat-list{
+      padding-top: 0px;
+
+      .toolbar-menu-item{
+
+        font-size: 14px;
+        font-weight: 600;
+
+
+        &:not(.disabled){
+          cursor: pointer;
+        }
+
+        &:disabled{
+
+        }
+
+        &:not(:last-child){
+          border-bottom-width: 1px;
+          border-bottom-style: solid;
+        }
+
+        .mat-line{
+          .sub {
+            font-size: 12px;
+          }
+        }
+
+      }
+    }
+  }
+
+}
+
+// Material CDK classes ////////////////////////
+///////////////////////////////////////////////
+

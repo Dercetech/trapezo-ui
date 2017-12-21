@@ -1,0 +1,136 @@
+@import '../../../../../node_modules/@angular/material/theming';
+
+@mixin wrapper-component-theme($theme){
+
+  $primary: map-get($theme, primary);
+  $primary-accent: map-get($primary, contrast);
+
+  $accent: map-get($theme, accent);
+
+  $warn: map-get($theme, warn);
+
+  $background: map-get($theme, background);
+  /*
+  $foreground: map-get($theme, foreground);
+
+  $text: map-get($foreground, text);
+  $card: map-get($background, card);
+  */
+
+  mat-sidenav-container{
+
+    .nav-menu{
+      box-shadow: map-get($primary, NAV_BOX-SHADOW);
+
+      .overlap-hack {
+        display: map-get($primary, NAV_LOGO_H1_USE_HACK);
+        background-color: map-get($primary, NAV_LOGO_H1_BG);
+      }
+
+      .nav-item{
+        h3{
+          background: map-get($primary, NAV_H3_BG);
+          font-size: map-get($primary, NAV_H3_SIZE);
+          font-weight: map-get($primary, NAV_H3_WEIGHT);
+          color: map-get($primary, NAV_H3_TXT);
+        }
+
+        ul{
+
+          li{
+            border-color: map-get($primary, NAV_LI-BORDER);
+
+            a{
+              font-weight: map-get($primary, NAV_A_WEIGHT);;
+
+              &, &:visited{
+                color: map-get($primary, NAV_A);
+              }
+
+              &:hover, &:active {
+                color: map-get($primary, NAV_A-ALT);
+                background-color: map-get($primary, NAV_A-ALT-BG);
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+    h1{
+      color: map-get($primary, NAV_LOGO_H1_TXT)!important;
+      background-color: map-get($primary, NAV_LOGO_H1_BG);
+    }
+
+    .mat-drawer{
+      background-color: map-get($primary, NAV_BG);
+    }
+  }
+
+  mat-sidenav-content{
+
+    background-color: map-get($primary, MAIN_BG);
+
+    // Main toolbar
+    > mat-toolbar {
+
+      &.mat-toolbar{
+        box-shadow: map-get($primary, TOOLBAR_BOX-SHADOW);
+        background-color: map-get($primary, TOOLBAR_BG);
+        color: map-get($primary, TOOLBAR_TXT);
+        border-bottom: map-get($primary, TOOLBAR_BORDER);
+
+        .toolbar-title{
+          color: map-get($primary, TOOLBAR_TITLE_COLOR);
+        }
+
+        .toolbar-controls{
+
+          > .toolbar-item.icon-only{
+
+            .material-icons{
+              opacity: 0.75;
+            }
+
+            &:hover, &:active{
+              .material-icons {
+                opacity: 1.0;
+                color: map-get($primary, TOOLBAR_TXT_ACTIVE);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .footer{
+      color: map-get($primary, FOOTER_TXT);
+      border-top: map-get($primary, FOOTER_BORDER);
+      background-color: map-get($primary, FOOTER_BG);
+
+      .brand{
+        color: map-get($primary, FOOTER_CONTRAST);
+      }
+
+      &.footer-mobile{
+        border-top: 1px solid map-get($primary, FOOTER_MOBILE_BORDER);
+
+        .toolbar-item{
+          &:hover, &:active{
+            color: map-get($primary, FOOTER_MOBILE_ACTIVE_TXT);
+            border-top-color: map-get($primary, FOOTER_MOBILE_ACTIVE_BG);
+            border-bottom-color: map-get($primary, FOOTER_MOBILE_ACTIVE_BG);
+            background-color: map-get($primary, FOOTER_MOBILE_ACTIVE_BG);
+          }
+
+          &:not(:last-child){
+            border-right: 1px solid map-get($primary, FOOTER_MOBILE_SEPARATOR);
+          }
+        }
+      }
+
+    }
+
+  }
+}

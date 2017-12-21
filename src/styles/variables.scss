@@ -1,0 +1,21 @@
+// Mobile first thresholds
+$MD_DISPLAY_UNDER: 960px;       // Make sure to also modify app/config/config.constants.ts "MOBILE_DISPLAY_UNDER" constant
+$MOBILE_DISPLAY_UNDER: 600px;   // Make sure to also modify app/config/config.constants.ts "MOBILE_DISPLAY_UNDER" constant
+
+// Toolbar height
+$TOOLBAR_HEIGHT_MOBILE: 56px;
+$TOOLBAR_HEIGHT_DESKTOP: 64px;
+
+// Side navigation menu
+//$SIDE_MENU_H3_FONT-SIZE: 0.75em;
+//$SIDE_MENU_H3_FONT-WEIGHT: 800;
+$SIDE_MENU_H3_PADDING: 4px 16px;
+
+
+// Display the footer as part of the always-visible, fixed (yet flex) layout?
+$FOOTER_FIXED_DISPLAY: none;    // no
+//$FOOTER_FIXED_DISPLAY: block; // yes
+
+// Display the footer as part of the scrollable contents (margins auto to bottom if content's too short)
+//$FOOTER_SCROLL_DISPLAY: none;     // no
+$FOOTER_SCROLL_DISPLAY: inherit;  // yes

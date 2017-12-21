@@ -1,0 +1,65 @@
+@import "../../../../styles/variables";
+
+:host {
+
+  flex: 0 0 54px;
+  z-index: 10;
+
+  // Deep: Ok, otherwise Angular will shadow-dom the css resulting from per-component stylesheets. This way it applies to subsequent dom object (real dom, not shadow one). Jem feels smart.
+  ::ng-deep mat-toolbar.secondary {
+
+    .mat-toolbar-row{
+      justify-content: space-between;
+
+      .toolbar-item {
+        flex: 1 1 100%;
+
+        .material-icons{
+          font-size: 1.8em;
+        }
+
+        &.menu-button{
+          flex: 1 1 64px;
+          cursor: pointer;
+          padding-top: 6px;
+
+          // Jem's super-clever use of CSS to hide the default "menu" button without any scripting - I'm the CSS surgeon!
+          .left-button + .default-button{
+            display: none;
+          }
+
+
+        }
+      }
+    }
+
+    .title{
+      font-variant: small-caps;
+      font-weight: 800;
+      letter-spacing: 0.25em;
+
+      text-align: center;
+      width: 100%;
+    }
+
+
+    // Mobile first: When in desktop mode, let the secondary toolbar take up more space and get overlapped
+    @media (min-width: $MOBILE_DISPLAY_UNDER) {
+      margin-bottom: -72px;
+
+      .title{
+        text-align: left;
+      }
+
+      .mat-toolbar-row{
+        justify-content: flex-start;
+        height: 128px;
+        padding-bottom: 48px;
+
+        .menu-button{
+          display: none;
+        }
+      }
+    }
+  }
+}

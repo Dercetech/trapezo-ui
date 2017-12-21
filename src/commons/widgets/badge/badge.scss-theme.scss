@@ -1,0 +1,14 @@
+@import '~@angular/material/theming';
+
+@mixin badge-theme($theme) {
+
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  .badge {
+    // background: map-get($warn, default);
+    background: map-get($primary, BADGE_ALERT);
+    color: map-get($primary, BADGE_TXT);
+  }
+}

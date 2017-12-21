@@ -1,0 +1,142 @@
+@import '../../../node_modules/@angular/material/theming';
+
+$PRIMARY_SUPERLIT: #ECECEC;
+$PRIMARY_LIT: #bed14f ;        // Averages the striped Stampify logo
+$PRIMARY_DFT: #b9d658;        // Looks toxic on the secondary toolbar
+$PRIMARY_DRK: #8ea63c;
+
+$ACCENT_LIGHT: #9DD3D5;  // 3AA7AA 200
+$ACCENT_DFT: #59a5a6;    // 3AA7AA 500
+$ACCENT_DARK: #2C9699;   // 3AA7AA 700
+
+// Alerts
+$ALERT_LIGHT: #FFCDD2;
+$ALERT_DFT: #F44336;
+$ALERT_DARK: #D32F2F;
+$ACCENT_ALERT: #d9534f;
+
+// SHADES
+$BLACK: #000;
+$SHADE_NEAR_BLACK: #1F2017;
+$SHADE_DARK: #3A3A3A;
+$SHADE_MEDIUM: #555555;
+
+// GREY
+$GREY_VDARK: #999;
+$GREY_DARK: #AAA;
+$GREY_MED: #CCC;
+$GREY_TINTED: #cfd8dc;
+$GREY_LIGHT: #EEEEEE;
+$GREY_ALMOST_WHITE: #FAFAFA;
+
+$WHITE: #FFF;
+
+
+// Specific variables //////////////////////////
+
+// TINTS
+$TINT_NAV : #3A3F51;
+$TINT_NAV_DARK : #2E3344;
+$TINT_BG : #F0F3F4;
+
+// Shadow
+$SHADOW-Z6: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12); // Z6
+$SHADOW-Z1: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+$SHADOW-VERTICAL-Z: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+
+// Palette definition //////////////////////////
+
+$mat-toxic:(
+
+  100 : $PRIMARY_LIT,        // Alt light green #fcff54
+  500 : $PRIMARY_DFT,
+  700 : $PRIMARY_DRK,        // Alt dark green #90b800
+  A100 : $ACCENT_LIGHT,
+  A200 : $ACCENT_DFT,
+  A400 : $ACCENT_DARK,
+
+  contrast: (
+    100 : #000000,
+    500 : $WHITE,
+    700 : $WHITE,
+    A100 : #000000,
+    A200 : #FFF,
+    A400 : #000000,
+  ),
+
+  BODY_BG_COLOR: $GREY_ALMOST_WHITE,
+
+  // Text
+  TEXT_NEAR_BLACK: $SHADE_NEAR_BLACK,
+
+  // Widgets
+  BADGE_ALERT: $ACCENT_ALERT,
+
+  NAV_LOGO_H1_BG: $SHADE_MEDIUM,
+  NAV_LOGO_H1_USE_HACK: block,
+  NAV_LOGO_H1_TXT: $PRIMARY_DFT,
+
+  // Sidenav / H3
+  NAV_BOX-SHADOW: $SHADOW-VERTICAL-Z,
+
+  NAV_BG: $SHADE_MEDIUM,
+  NAV_H3_SIZE: 0.75em,
+  NAV_H3_WEIGHT: 600,
+  NAV_H3_TXT: $PRIMARY_DRK,
+  NAV_H3_BG: $SHADE_DARK,
+
+  NAV_LI-BORDER: rgba(0,0,0,.06),
+
+  NAV_A_WEIGHT: 600,
+  NAV_A: $GREY_MED,
+  NAV_A-ALT : $SHADE_DARK,
+  NAV_A-ALT-BG : $GREY_ALMOST_WHITE,
+
+
+  // Main content
+  MAIN_BG: $PRIMARY_SUPERLIT,
+
+  TOOLBAR_BG: $SHADE_MEDIUM,
+  TOOLBAR_BOX-SHADOW: $SHADOW-Z1,
+  TOOLBAR_BORDER: $SHADE_DARK,
+  TOOLBAR_TITLE_COLOR: $PRIMARY_DFT, //$SHADE_MEDIUM,
+  TOOLBAR_TXT: $PRIMARY_DFT,
+  TOOLBAR_TXT_ACTIVE: $PRIMARY_LIT,
+
+  SECONDARY_TOOLBAR_DISPLAY: none, //block,
+  SECONDARY_TOOLBAR_TXT: $SHADE_MEDIUM,
+  SECONDARY_TOOLBAR_BG: $PRIMARY_LIT,
+  SECONDARY_TOOLBAR_SHADOW: $SHADOW-Z6,
+  SECONDARY_TOOLBAR_BORDER: none,
+
+  TOOLBAR_MOBILE_BG: $SHADE_MEDIUM,
+  TOOLBAR_MOBILE_TXT: $PRIMARY_DFT,
+
+  FOOTER_BG: $GREY_LIGHT,
+  FOOTER_BORDER: 1px solid $GREY_LIGHT,
+  FOOTER_TXT: $GREY_VDARK,
+  FOOTER_CONTRAST: $PRIMARY_DRK,
+
+  FOOTER_MOBILE_BORDER: $GREY_MED,
+  FOOTER_MOBILE_ACTIVE_TXT: $SHADE_MEDIUM,
+  FOOTER_MOBILE_ACTIVE_BG: $GREY_MED,
+  FOOTER_MOBILE_SEPARATOR: $GREY_DARK,
+
+  // Common components
+  //BADGE_BG: $ALERT_DFT,
+  BADGE_TXT: $WHITE,
+
+  DROPZONE_TXT: $SHADE_MEDIUM,
+  DROPZONE_ACTIVE_TXT: $PRIMARY_DRK,
+  DROPZONE_BG: $GREY_LIGHT,
+  DROPZONE_ACTIVE_BG: $GREY_ALMOST_WHITE,
+  DROPZONE_BORDER: $GREY_VDARK,
+  DROPZONE_ACTIVE_BORDER: $PRIMARY_LIT,
+);
+
+
+$toxic-theme: mat-light-theme(
+    mat-palette($mat-toxic, 500, 100, 700),
+    mat-palette($mat-toxic, A200, A100, A400),
+    mat-palette($mat-red)
+);

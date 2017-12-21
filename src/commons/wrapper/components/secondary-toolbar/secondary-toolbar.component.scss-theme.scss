@@ -1,0 +1,33 @@
+@import '../../../../../node_modules/@angular/material/theming';
+@import "../../../../styles/variables";
+
+@mixin secondary-toolbar-theme($theme){
+
+  $primary: map-get($theme, primary);
+
+  mat-toolbar.secondary{
+    color: map-get($primary, TOOLBAR_MOBILE_TXT);
+    background-color: map-get($primary, TOOLBAR_MOBILE_BG);
+    box-shadow: map-get($primary, TOOLBAR_MOBILE_SHADOW);
+
+    .left-button, .right-button{
+      &:hover{
+        .material-icons{
+          color: map-get($primary, TOOLBAR_TXT_ACTIVE)!important;
+        }
+      }
+    }
+  }
+
+  // Desktop mode
+  @media (min-width: $MOBILE_DISPLAY_UNDER) {
+
+    mat-toolbar.secondary {
+      display: map-get($primary, SECONDARY_TOOLBAR_DISPLAY)!important;
+      color: map-get($primary, SECONDARY_TOOLBAR_TXT);
+      background-color: map-get($primary, SECONDARY_TOOLBAR_BG);
+      box-shadow: map-get($primary, SECONDARY_TOOLBAR_SHADOW);
+      border-bottom: map-get($primary, SECONDARY_TOOLBAR_BORDER);
+    }
+  }
+}

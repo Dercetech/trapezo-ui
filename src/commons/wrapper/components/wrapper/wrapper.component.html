@@ -1,0 +1,162 @@
+<mat-sidenav-container class="hack-to-fix-ios-height">
+
+  <!-- Side menu -->
+  <mat-sidenav [mode]="navMode" [opened]="shouldStartOpened" class="nav-menu" #sidenav ng-click="closeSidenav()">
+
+    <div class="width-hack"></div>
+    <div class="overlap-hack" fxHide.lt-md></div>
+    <h1>TRAPEZO</h1>
+    <!--<div class="stampify-logo logo-180"></div>-->
+
+    <div class="nav-item">
+      <h3>administration</h3>
+      <ul>
+        <li><a routerLink="dashboard"><i class="fa fa-table" aria-hidden="true"></i>captable</a></li>
+        <li><a routerLink="dashboard"><i class="fa fa-check-square-o" aria-hidden="true"></i>partner agreement</a></li>
+      </ul>
+    </div>
+
+    <div fxFlex></div>
+
+    <div *ngIf="false" class="nav-item">
+      <h3>badass, dude</h3>
+      <ul>
+        <li><a href="" target="_blank"><i class="fa fa-diamond" aria-hidden="true"></i>click me</a></li>
+      </ul>
+    </div>
+
+  </mat-sidenav>
+
+  <!-- Routed contents -->
+  <mat-sidenav-content>
+
+    <!-- Horizontal top toolbar: desktop only -->
+    <mat-toolbar *ngIf="!isMobileMode">
+      <mat-toolbar-row>
+        <div *ngIf="showMenuButton" class="toolbar-controls">
+          <div class="toolbar-item icon-only menu-toggle" (click)="toggleMenu()">
+            <i class="material-icons">menu</i>
+          </div>
+        </div>
+        <div class="toolbar-title">{{toolbarTitle}}</div>
+        <div fxFlex></div>
+        <div class="toolbar-controls">
+          <div routerLink="dashboard" class="toolbar-item icon-only"><i class="material-icons">home</i></div>
+
+          <!-- Notifications -->
+          <div class="toolbar-item icon-only" [matMenuTriggerFor]="menuNotifications">
+            <i class="material-icons">notifications_active</i><span class="badge">0</span>
+          </div>
+
+          <!-- Mail -->
+          <div class="toolbar-item icon-only" [matMenuTriggerFor]="menuMail"><i class="material-icons">email</i></div>
+
+          <!-- User menu -->
+          <div class="toolbar-item icon-only">
+            <img class="avatar" src="assets/img/avatars/noavatar.png">
+          </div>
+
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <!-- Page contents -->
+    <div class="page-wrapper">
+
+      <router-outlet (activate)='onOutletActivated($event)'></router-outlet>
+
+      <!-- Footer: After scroll (for desktop) -->
+      <div *ngIf="!isMobileMode" class="footer after-scroll">
+        <div class="contents">
+          copyright <span class="brand" style="margin-left: 8px; font-weight:bold;letter-spacing:0.2em;">STAMPIFY</span>
+          2017
+          <i class="fa fa-linkedin" aria-hidden="true"></i>
+          <i class="fa fa-facebook-official" aria-hidden="true"></i>
+          <i class="fa fa-medium" aria-hidden="true"></i>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer: As fixed scroll (for desktop) -->
+    <div *ngIf="!isMobileMode" class="footer as-fixed">
+      <div class="contents">
+        copyleft <span class="brand">Dercetech</span>
+        2017
+        <i class="fa fa-linkedin" aria-hidden="true"></i>
+        <i class="fa fa-facebook-official" aria-hidden="true"></i>
+        <i class="fa fa-medium" aria-hidden="true"></i>
+      </div>
+    </div>
+
+    <!-- Footer: Mobile -->
+    <div *ngIf="isMobileMode" class="footer footer-mobile">
+      <div routerLink="dashboard" class="toolbar-item icon-only"><i class="material-icons">home</i></div>
+
+      <!-- Notifications -->
+      <div class="toolbar-item icon-only" [matMenuTriggerFor]="menuNotifications">
+        <i class="material-icons">notifications_active</i><span class="badge">0</span>
+      </div>
+
+      <!-- Emails -->
+      <div class="toolbar-item icon-only" [matMenuTriggerFor]="menuMail"><i class="material-icons">email</i></div>
+
+    </div>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+
+<mat-menu #menuNotifications="matMenu" [overlapTrigger]="false" xPosition="before"
+          class="toolbar-menus guided-tour-desktop-notification-menu">
+  <div class="toolbar-header">
+    notifications & open tasks
+  </div>
+  <mat-list>
+    <mat-list-item class="toolbar-menu-item" >
+
+    </mat-list-item>
+    <mat-list-item *ngFor="let notification of []" class="toolbar-menu-item">
+
+      <mat-icon matListIcon>email</mat-icon>
+      <h3 matLine> subject </h3>
+      <p matLine>
+        <span class="sub"> underline </span>
+      </p>
+
+    </mat-list-item>
+  </mat-list>
+  <div fxHide class="toolbar-footer"></div>
+
+</mat-menu>
+
+<mat-menu #menuMail="matMenu" [overlapTrigger]="false" xPosition="before" class="toolbar-menus">
+  <div class="toolbar-header">
+    messages
+  </div>
+  <mat-list>
+
+    <mat-list-item class="toolbar-menu-item" (click)="onMessageClicked()">
+      <mat-icon matListIcon>chat</mat-icon>
+      <h3 matLine>Stephen Ranson: "Hi, ping me when (...)"</h3>
+    </mat-list-item>
+
+    <mat-list-item class="toolbar-menu-item" (click)="onMessageClicked()">
+      <mat-icon matListIcon>mail_outline</mat-icon>
+      <h3 matLine>Ellis Barker</h3>
+      <p matLine><span class="sub">Shareholder agreement draft</span></p>
+    </mat-list-item>
+
+    <mat-list-item class="toolbar-menu-item" (click)="onMessageClicked()">
+      <mat-icon matListIcon>mail_outline</mat-icon>
+      <h3 matLine>Stampify Team</h3>
+      <p matLine><span class="sub">Welcome to the future of corporate governance</span></p>
+    </mat-list-item>
+
+  </mat-list>
+  <div class="toolbar-footer">
+    demo account
+  </div>
+
+</mat-menu>
