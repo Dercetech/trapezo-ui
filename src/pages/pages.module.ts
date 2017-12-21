@@ -1,7 +1,6 @@
 import {NgModule} from "@angular/core";
 import {CustomMaterialModule} from "../commons/widgets/material/material.module";
 import {BrowserModule} from "@angular/platform-browser";
-import {HttpModule} from "@angular/http";
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FlexLayoutModule} from "@angular/flex-layout";
@@ -13,11 +12,17 @@ import {CommonComponentsModule} from "../commons/common-components.module";
 import {LoginComponent} from "./public/login/login.component";
 import {RouterModule} from "@angular/router";
 import {DashboardComponent} from "./secure/dashboard/dashboard.component";
+import {AdminUserComponent} from "./secure/admin-user/admin-user.component";
+import {AddUserComponent} from "./secure/admin-user/add-user/add-user.component";
 
 @NgModule({
   declarations:[
     LoginComponent,
-    DashboardComponent
+
+    DashboardComponent,
+
+    AdminUserComponent,
+    AddUserComponent
   ],
   imports:[
     BrowserModule,
@@ -36,7 +41,11 @@ import {DashboardComponent} from "./secure/dashboard/dashboard.component";
   ],
   exports:[
     LoginComponent,
-    DashboardComponent
+
+    DashboardComponent,
+
+    AdminUserComponent,
+    AddUserComponent
   ]
 })
 

@@ -11,8 +11,7 @@
     <div class="nav-item">
       <h3>administration</h3>
       <ul>
-        <li><a routerLink="dashboard"><i class="fa fa-table" aria-hidden="true"></i>roles</a></li>
-        <li><a routerLink="dashboard"><i class="fa fa-check-square-o" aria-hidden="true"></i>partner agreement</a></li>
+        <li><a routerLink="admin/users"><i class="fa fa-users" aria-hidden="true"></i>users</a></li>
       </ul>
     </div>
 
@@ -55,7 +54,7 @@
           <div *ngIf="false" class="toolbar-item icon-only" [matMenuTriggerFor]="menuUser"><img class="avatar" src="assets/img/avatars/noavatar.png"></div>
 
           <!-- User menu without profile picture -->
-          <div *ngIf="true" class="toolbar-item icon-only" [matMenuTriggerFor]="menuUser"><i class="material-icons">person</i></div>
+          <div *ngIf="true" class="toolbar-item icon-only" [matMenuTriggerFor]="menuUser"><i class="material-icons">account_circle</i></div>
 
         </div>
       </mat-toolbar-row>

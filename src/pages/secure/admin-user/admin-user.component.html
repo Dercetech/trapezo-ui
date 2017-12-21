@@ -1,0 +1,59 @@
+<app-secondary-toolbar [title]="title">
+  <div *ngIf="showLeftButton" class="left-button">
+    <button mat-icon-button routerLink="..">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+  </div>
+
+  <div *ngIf="showRightButton" fxHide.gt-xs class="right-button">
+    <button mat-icon-button (click)="onAdd()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+</app-secondary-toolbar>
+
+<div class="content-body">
+
+  <mat-card>
+
+    <!-- Desktop only -->
+
+    <mat-card-title fxHide fxShow.gt-xs fxLayout="row" class="card-content-cancel-margins card-padded-content">
+
+      <!-- Title & subtitle -->
+      <div fxLayout="column">
+        <span class="title">Current users</span>
+        <!--span class="subtitle">hello</span-->
+      </div>
+
+      <!-- Flex separator -->
+      <div fxFlex></div>
+
+      <!-- Create new resolution -->
+      <button mat-icon-button (click)="onAdd()">
+        <mat-icon>add</mat-icon>
+      </button>
+
+      <!-- Overlay menu -->
+      <button mat-icon-button [matMenuTriggerFor]="options">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+
+    </mat-card-title>
+
+    <p>See the component. Toolbar buttons can be disabled and setting showLeftButton to false allows, by means of CSS, to display the menu button (aka hamburger).</p>
+  </mat-card>
+
+</div>
+
+<mat-menu #options="matMenu">
+  <button mat-menu-item disabled>
+    <mat-icon> search </mat-icon>
+    <span> search... </span>
+  </button>
+  <button mat-menu-item disabled>
+    <mat-icon> archive </mat-icon>
+    <span> view archived </span>
+  </button>
+</mat-menu>

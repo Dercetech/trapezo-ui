@@ -7,6 +7,8 @@ import {AuthGuardService} from "../framework/authentication/services/auth-guard.
 import {WrapperComponent} from "../commons/wrapper/components/wrapper/wrapper.component";
 import {LoginComponent} from "../pages/public/login/login.component";
 import {DashboardComponent} from "../pages/secure/dashboard/dashboard.component";
+import {AdminUserComponent} from "../pages/secure/admin-user/admin-user.component";
+import {AddUserComponent} from "../pages/secure/admin-user/add-user/add-user.component";
 
 const appRoutes: Routes = [
 
@@ -23,7 +25,14 @@ const appRoutes: Routes = [
 
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'dashboard'},
-      { path: 'dashboard', component: DashboardComponent, data: {}, canActivate: [] }
+      { path: 'dashboard', component: DashboardComponent, data: {}, canActivate: [] },
+
+      { path: 'admin', data: { roles: [] }, canActivate: [AuthGuardService], children: [
+        { path: 'users', data: {}, canActivate: [], children: [
+          { path: '', component: AdminUserComponent },
+          { path: 'add-user', component: AddUserComponent }
+        ]},
+      ]}
     ]
   }
 ];

@@ -138,6 +138,10 @@
             &.icon-only{
               //max-height: 40px;
               margin-right: 32px;
+
+              .material-icons{
+                font-size: 26px;
+              }
             }
 
             &.menu-toggle{
