@@ -37,9 +37,7 @@ export class AuthService {
       const decodedTokenClaims:any = this.tokenService.getTokenClaims();
       this.currentUser = decodedTokenClaims.user;
       this.loggedIn = true;
-      this.router.navigate(['/', 'secure']);
-      setTimeout( () => this.authChanged$.next('auth'), 10);
-      setTimeout( () => this.router.navigate(['/', 'secure']), 15);
+      this.authChanged$.next('auth');
     }
     catch(err){
       console.log(err);
@@ -82,8 +80,9 @@ export class AuthService {
   }
 
   logout(){
+    this.currentUser = null;
     this.loggedIn = false;
+    this.tokenService.unsetToken();
     this.authChanged$.next('signout');
-    this.router.navigate(['/']);
   }
 }

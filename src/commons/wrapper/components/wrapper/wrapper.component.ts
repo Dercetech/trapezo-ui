@@ -7,9 +7,10 @@ import {Subscription} from "rxjs/Subscription";
 import {APP_CONFIG} from "../../../../app/config/config.constants";
 import {AppConfig} from "../../../../app/config/config.interface";
 
-import {ToolbarService} from "../../services/toolbar.service";
-import {SideMenuService} from "../../services/side-menu.service";
+import {AuthService} from "../../../../framework/authentication/services/auth-service";
 import {InterfaceService} from "../../services/interface.service";
+import {SideMenuService} from "../../services/side-menu.service";
+import {ToolbarService} from "../../services/toolbar.service";
 
 @Component({
   selector: 'app-wrapper',
@@ -37,13 +38,13 @@ export class WrapperComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(private router: Router,
               @Inject(APP_CONFIG) private config: AppConfig,
+              @Inject(AuthService) private authService: AuthService,
               @Inject(InterfaceService) private interfaceService: InterfaceService,
               @Inject(SideMenuService) private sideMenuService: SideMenuService,
               @Inject(ToolbarService) private toolbarService: ToolbarService) {
 
     // Reactive title setting
     this.subscriptions.push(this.toolbarService.title$.subscribe( (title:string) => this.toolbarTitle = title));
-
   }
 
   ngOnInit() {
@@ -121,5 +122,10 @@ export class WrapperComponent implements OnInit, OnDestroy, AfterViewInit {
 
   onLogoClicked(){
     this.router.navigate(['/', 'secure', 'dashboard']);
+  }
+
+  onLoggout(){
+    this.authService.logout();
+    this.router.navigate(['/']);
   }
 }

@@ -38,7 +38,6 @@ export class AuthGuardService implements CanActivate{
     }
 
     else{
-      console.log('cacaproute');
       this.router.navigate(['/']);
     }
   }

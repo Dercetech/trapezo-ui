@@ -15,7 +15,6 @@ export class AuthAutoRedirectService implements CanActivate{
         return false;
       }
       else {
-        console.log('cacaboundin')
         return true;
       }
   }

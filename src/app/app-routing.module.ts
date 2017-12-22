@@ -40,7 +40,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(appRoutes, {useHash: false})
+    RouterModule.forRoot(appRoutes, {useHash: false, enableTracing: false })
   ],
   exports: [
     RouterModule    // configured router module
