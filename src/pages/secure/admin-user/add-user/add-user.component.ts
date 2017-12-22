@@ -1,4 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
+import {FormBuilder, Validators} from "@angular/forms";
+
 import {BroadcastTitle} from "../../../../commons/wrapper/interfaces/title-broadcast";
 import {ToolbarService} from "../../../../commons/wrapper/services/toolbar.service";
 
@@ -14,7 +16,16 @@ export class AddUserComponent implements OnInit, BroadcastTitle {
   showLeftButton:boolean = true;
   showRightButton:boolean = true;
 
-  constructor(@Inject(ToolbarService) private toolbarService: ToolbarService) { }
+  userForm = this._formBuilder.group({
+    username: ["", Validators.required],
+    displayName: ["", Validators.required],
+    email: ["", Validators.required],
+    password: ["", Validators.required],
+    passwordConfirm: ["", Validators.required],
+  });
+
+  constructor(private _formBuilder: FormBuilder,
+              @Inject(ToolbarService) private toolbarService: ToolbarService) { }
 
   ngOnInit() {
   }

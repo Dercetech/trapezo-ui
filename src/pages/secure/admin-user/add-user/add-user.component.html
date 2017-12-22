@@ -19,13 +19,41 @@
       user data
     </mat-card-title>
 
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit($event)"
+          fxLayout="column" fxLayout.gt-xs="row" fxLayoutGap.gt-xs="32px">
+
+      <!-- Group 1 : username -->
+      <div fxFlex="0 0 100%" fxFlex.sm="1 1 100%" fxFlex.gt-sm="1 1 300px" fxLayout="column">
+        <mat-form-field>
+          <input tabindex="1" matInput formControlName="username"  placeholder="username" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input tabindex="2" matInput formControlName="email" placeholder="email" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input tabindex="3" matInput formControlName="displayName"  placeholder="display name" required>
+        </mat-form-field>
+      </div>
+
+      <!-- Group 2 : password -->
+      <div fxFlex="0 0 100%" fxFlex.sm="1 1 100%" fxFlex.gt-sm="1 1 300px" fxLayout="column">
+        <mat-form-field>
+          <input tabindex="4" matInput formControlName="password" type="password" placeholder="password" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input tabindex="5" matInput formControlName="password" type="password" placeholder="password confirm" required>
+        </mat-form-field>
+      </div>
+
+    </form>
+
   </mat-card>
 
   <mat-card fxHide fxShow.gt-xs>
     <div fxLayout="row" fxLayoutGap="16px" style="margin-top: 16px">
       <div fxFlex></div>
       <button mat-button mat-raised-button routerLink="..">cancel</button>
-      <button mat-button mat-raised-button (click)="onSubmit()" [disabled]="isSubmitButtonDisabled()" color="primary">apply</button>
+      <button mat-button mat-raised-button (click)="onSubmit()" [disabled]="isSubmitButtonDisabled()" color="primary">create</button>
     </div>
   </mat-card>
 
