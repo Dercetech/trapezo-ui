@@ -5,10 +5,10 @@
 
     <div class="width-hack"></div>
     <div class="overlap-hack" fxHide.lt-md></div>
-    <h1 (click)="onLogoClicked(); menuItemClicked()">TRAPEZO</h1>
+    <h1 (click)="onLogoClicked(); menuItemClicked()">{{ config.CONTENTS.APP_TITLE }}</h1>
     <!--<div routerLink="dashboard" class="trapezo-logo logo-180"></div>-->
 
-    <div class="nav-item">
+    <div *ngIf="interfaceService.isAdminControlsAvailable()" class="nav-item">
       <h3>administration</h3>
       <ul>
         <li><a routerLink="admin/users" (click)="menuItemClicked()"><i class="fa fa-users" aria-hidden="true"></i>users</a></li>
@@ -17,7 +17,7 @@
 
     <div fxFlex></div>
 
-    <div *ngIf="false" class="nav-item">
+    <div *ngIf="config.INTERFACE.MENU_BOTTOM_OPTIONS" class="nav-item">
       <h3>badass, dude</h3>
       <ul>
         <li><a href="" target="_blank"><i class="fa fa-diamond" aria-hidden="true"></i>click me</a></li>
@@ -43,12 +43,12 @@
           <div routerLink="dashboard" class="toolbar-item icon-only"><i class="material-icons">home</i></div>
 
           <!-- Notifications -->
-          <div *ngIf="showNotifications" class="toolbar-item icon-only" [matMenuTriggerFor]="menuNotifications">
+          <div *ngIf="config.INTERFACE.TOOLBAR_NOTIFICATIONS" class="toolbar-item icon-only" [matMenuTriggerFor]="menuNotifications">
             <i class="material-icons">notifications_active</i><span class="badge">0</span>
           </div>
 
           <!-- Mail -->
-          <div *ngIf="showMessages" class="toolbar-item icon-only" [matMenuTriggerFor]="menuMail"><i class="material-icons">email</i></div>
+          <div *ngIf="config.INTERFACE.TOOLBAR_MESSAGES" class="toolbar-item icon-only" [matMenuTriggerFor]="menuMail"><i class="material-icons">email</i></div>
 
           <!-- User menu with profile picture -->
           <div *ngIf="false" class="toolbar-item icon-only" [matMenuTriggerFor]="menuUser"><img class="avatar" src="assets/img/avatars/noavatar.png"></div>
@@ -68,11 +68,13 @@
       <!-- Footer: After scroll (for desktop) -->
       <div *ngIf="!isMobileMode" class="footer after-scroll">
         <div class="contents">
-          copyleft <span class="brand" style="margin-left: 8px; font-weight:bold;letter-spacing:0.2em;">Dercetech</span>
-          2017
-          <i class="fa fa-linkedin" aria-hidden="true"></i>
-          <i class="fa fa-facebook-official" aria-hidden="true"></i>
-          <i class="fa fa-medium" aria-hidden="true"></i>
+          {{ config.CONTENTS.COPYRIGHT }} <span class="brand" style="margin-left: 8px; font-weight:bold;letter-spacing:0.2em;">{{ config.CONTENTS.COPYRIGHT_BRAND }}</span>
+          {{ config.CONTENTS.COPYRIGHT_YEAR }}
+          <a *ngIf="config.CONTENTS.FOOTER_TWITTER" target="_blank" [href]="config.CONTENTS.FOOTER_TWITTER"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          <a *ngIf="config.CONTENTS.FOOTER_FACEBOOK" target="_blank" [href]="config.CONTENTS.FOOTER_FACEBOOK"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+          <a *ngIf="config.CONTENTS.FOOTER_YOUTUBE" target="_blank" [href]="config.CONTENTS.FOOTER_YOUTUBE"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+          <a *ngIf="config.CONTENTS.FOOTER_GITHUB" target="_blank" [href]="config.CONTENTS.FOOTER_GITHUB"><i class="fa fa-github" aria-hidden="true"></i></a>
+          <a *ngIf="config.CONTENTS.FOOTER_LINKEDIN" target="_blank" [href]="config.CONTENTS.FOOTER_LINKEDIN"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
         </div>
       </div>
 
@@ -81,11 +83,13 @@
     <!-- Footer: As fixed scroll (for desktop) -->
     <div *ngIf="!isMobileMode" class="footer as-fixed">
       <div class="contents">
-        copyleft <span class="brand">Dercetech</span>
-        2017
-        <i class="fa fa-linkedin" aria-hidden="true"></i>
-        <i class="fa fa-facebook-official" aria-hidden="true"></i>
-        <i class="fa fa-medium" aria-hidden="true"></i>
+        {{ config.CONTENTS.COPYRIGHT }} <span class="brand"><a target="_blank" [href]="config.CONTENTS.FOOTER_BRAND_LINK">{{ config.CONTENTS.COPYRIGHT_BRAND }}</a></span>
+        {{ config.CONTENTS.COPYRIGHT_YEAR }}
+        <a *ngIf="config.CONTENTS.FOOTER_TWITTER" target="_blank" [href]="config.CONTENTS.FOOTER_TWITTER"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        <a *ngIf="config.CONTENTS.FOOTER_FACEBOOK" target="_blank" [href]="config.CONTENTS.FOOTER_FACEBOOK"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+        <a *ngIf="config.CONTENTS.FOOTER_YOUTUBE" target="_blank" [href]="config.CONTENTS.FOOTER_YOUTUBE"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+        <a *ngIf="config.CONTENTS.FOOTER_GITHUB" target="_blank" [href]="config.CONTENTS.FOOTER_GITHUB"><i class="fa fa-github" aria-hidden="true"></i></a>
+        <a *ngIf="config.CONTENTS.FOOTER_LINKEDIN" target="_blank" [href]="config.CONTENTS.FOOTER_LINKEDIN"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
       </div>
     </div>
 
@@ -94,12 +98,12 @@
       <div routerLink="dashboard" class="toolbar-item icon-only"><i class="material-icons">home</i></div>
 
       <!-- Notifications -->
-      <div class="toolbar-item icon-only" [matMenuTriggerFor]="menuNotifications">
+      <div *ngIf="config.INTERFACE.TOOLBAR_NOTIFICATIONS" class="toolbar-item icon-only" [matMenuTriggerFor]="menuNotifications">
         <i class="material-icons">notifications_active</i><span class="badge">0</span>
       </div>
 
       <!-- Emails -->
-      <div class="toolbar-item icon-only" [matMenuTriggerFor]="menuMail"><i class="material-icons">email</i></div>
+      <div *ngIf="config.INTERFACE.TOOLBAR_MESSAGES" class="toolbar-item icon-only" [matMenuTriggerFor]="menuMail"><i class="material-icons">email</i></div>
 
     </div>
 
@@ -113,13 +117,7 @@
   </div>
   <mat-list>
 
-    <mat-list-item class="toolbar-menu-item disabled">
-      <mat-icon matListIcon>account_balance_wallet</mat-icon>
-      <h3 matLine>520 Stamps</h3>
-      <p matLine><span class="sub">purchase Stamps</span></p>
-    </mat-list-item>
-
-    <mat-list-item class="toolbar-menu-item disabled">
+    <mat-list-item class="toolbar-menu-item z-disabled" (click)="onMyAccount()">
       <mat-icon matListIcon>settings</mat-icon>
       <h3 matLine>profile & settings</h3>
       <p matLine><span class="sub"></span></p>

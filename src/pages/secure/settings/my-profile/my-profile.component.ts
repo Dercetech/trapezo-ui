@@ -1,17 +1,15 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {BroadcastTitle} from "../../interfaces/title-broadcast";
-import {ToolbarService} from "../../services/toolbar.service";
+import {BroadcastTitle} from '../../../../commons/wrapper/interfaces/title-broadcast';
+import {ToolbarService} from '../../../../commons/wrapper/services/toolbar.service';
 
-/*
 @Component({
-  selector: 'app-dft-page',
-  templateUrl: './dft-page.component.html',
-  styleUrls: ['./dft-page.component.scss']
+  selector: 'app-my-profile',
+  templateUrl: './my-profile.component.html',
+  styleUrls: ['./my-profile.component.scss']
 })
-*/
-export class DefaultPageComponent implements OnInit, BroadcastTitle {
+export class MyProfileComponent implements OnInit, BroadcastTitle {
 
-  title: string = 'default page';
+  title: string = 'my profile';
 
   showLeftButton: boolean = false;
   showRightButton: boolean = true;

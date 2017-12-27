@@ -9,6 +9,7 @@ import {LoginComponent} from "../pages/public/login/login.component";
 import {DashboardComponent} from "../pages/secure/dashboard/dashboard.component";
 import {AdminUserComponent} from "../pages/secure/admin-user/admin-user.component";
 import {UpsertUserComponent} from '../pages/secure/admin-user/upsert-user/upsert-user.component';
+import {MyProfileComponent} from '../pages/secure/settings/my-profile/my-profile.component';
 
 const appRoutes: Routes = [
 
@@ -27,7 +28,12 @@ const appRoutes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'dashboard'},
       { path: 'dashboard', component: DashboardComponent, data: {}, canActivate: [] },
 
-      { path: 'admin', data: { roles: [] }, canActivate: [AuthGuardService], children: [
+      { path: 'settings', data: { roles: [] }, children: [
+        { path: '', pathMatch: 'full', redirectTo: 'my-profile'},
+        { path: 'my-profile', data: {}, canActivate: [], component: MyProfileComponent },
+      ]},
+
+      { path: 'admin', data: { roles: ['admin'] }, canActivate: [AuthGuardService], children: [
         { path: '', pathMatch: 'full', redirectTo: 'users'},
         { path: 'users', data: {}, canActivate: [], children: [
           { path: '', pathMatch: 'full', component: AdminUserComponent },

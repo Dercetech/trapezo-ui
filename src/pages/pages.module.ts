@@ -12,6 +12,7 @@ import {CommonComponentsModule} from "../commons/common-components.module";
 import {LoginComponent} from "./public/login/login.component";
 import {RouterModule} from "@angular/router";
 import {DashboardComponent} from "./secure/dashboard/dashboard.component";
+import {MyProfileComponent} from './secure/settings/my-profile/my-profile.component';
 import {AdminUserComponent} from "./secure/admin-user/admin-user.component";
 import {UpsertUserComponent} from './secure/admin-user/upsert-user/upsert-user.component';
 
@@ -21,6 +22,8 @@ import {UpsertUserComponent} from './secure/admin-user/upsert-user/upsert-user.c
     LoginComponent,
 
     DashboardComponent,
+
+    MyProfileComponent,
 
     AdminUserComponent,
     UpsertUserComponent
@@ -44,6 +47,8 @@ import {UpsertUserComponent} from './secure/admin-user/upsert-user/upsert-user.c
     LoginComponent,
 
     DashboardComponent,
+
+    MyProfileComponent,
 
     AdminUserComponent,
     UpsertUserComponent

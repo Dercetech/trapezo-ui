@@ -1,0 +1,32 @@
+<app-secondary-toolbar [title]="title">
+  <div *ngIf="showLeftButton" class="left-button">
+    <button mat-icon-button routerLink="..">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+  </div>
+
+  <div *ngIf="showRightButton" fxHide.gt-xs class="right-button">
+    <button mat-icon-button [disabled]="isSubmitButtonDisabled()" (click)="onSubmit()">
+      <mat-icon>check</mat-icon>
+    </button>
+  </div>
+</app-secondary-toolbar>
+
+<div class="content-body" fxLayout="column">
+
+  <mat-card fxFlex="0 1 100%">
+    <mat-card-title>
+      template page
+    </mat-card-title>
+    <p>See the component. Toolbar buttons can be disabled and setting showLeftButton to false allows, by means of CSS, to display the menu button (aka hamburger).</p>
+  </mat-card>
+
+  <mat-card fxHide fxShow.gt-xs>
+    <div fxLayout="row" fxLayoutGap="16px" style="margin-top: 16px">
+      <div fxFlex></div>
+      <button mat-button mat-raised-button routerLink="..">close</button>
+      <button mat-button mat-raised-button (click)="onSubmit()" [disabled]="isSubmitButtonDisabled()" color="primary">apply</button>
+    </div>
+  </mat-card>
+
+</div>

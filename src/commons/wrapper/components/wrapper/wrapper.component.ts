@@ -20,26 +20,24 @@ import {ToolbarService} from "../../services/toolbar.service";
 export class WrapperComponent implements OnInit, OnDestroy, AfterViewInit {
 
   // Interface
-  isMobileMode:boolean = false;
+  isMobileMode: boolean = false;
 
   // Navigation bar
-  navMode:string = 'over';
-  shouldStartOpened:boolean = false;
+  navMode: string = 'over';
+  shouldStartOpened: boolean = false;
 
   // Toolbar
   toolbarTitle:string;
   showMenuButton:boolean = true;
-  showNotifications:boolean = true;
-  showMessages:boolean = true;
 
-  @ViewChild('sidenav') sidenav:MatSidenav;
+  @ViewChild('sidenav') sidenav: MatSidenav;
 
-  private subscriptions:Subscription[] = [];
+  private subscriptions: Subscription[] = [];
 
   constructor(private router: Router,
-              @Inject(APP_CONFIG) private config: AppConfig,
+              @Inject(APP_CONFIG) public config: AppConfig,
+              @Inject(InterfaceService) public interfaceService: InterfaceService,
               @Inject(AuthService) private authService: AuthService,
-              @Inject(InterfaceService) private interfaceService: InterfaceService,
               @Inject(SideMenuService) private sideMenuService: SideMenuService,
               @Inject(ToolbarService) private toolbarService: ToolbarService) {
 
@@ -87,12 +85,12 @@ export class WrapperComponent implements OnInit, OnDestroy, AfterViewInit {
     this.shouldStartOpened = (window.innerWidth >= this.config.COLLAPSE_MENU_UNDER) ? true : false;
   }
 
-  private refreshLayoutForNewsize(newSize:number){
+  private refreshLayoutForNewsize(newSize: number) {
     if (newSize >= this.config.COLLAPSE_MENU_UNDER) {
       this.navMode = 'side';
       this.showMenuButton = false;
       this.isMobileMode = false;
-      this.sideMenuService.openMenu()
+      this.sideMenuService.openMenu();
     }
 
     else if (newSize >= this.config.MOBILE_DISPLAY_UNDER) {
@@ -110,21 +108,25 @@ export class WrapperComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-  menuItemClicked(){
+  menuItemClicked() {
     if(this.navMode === 'over'){
       this.sideMenuService.closeMenu();
     }
   }
 
-  toggleMenu(){
+  toggleMenu() {
     this.sideMenuService.toggleMenu();
   }
 
-  onLogoClicked(){
+  onLogoClicked() {
     this.router.navigate(['/', 'secure', 'dashboard']);
   }
 
-  onLoggout(){
+  onMyAccount() {
+    this.router.navigate(['/', 'secure', 'settings', 'my-profile']);
+  }
+
+  onLoggout() {
     this.authService.logout();
     this.router.navigate(['/']);
   }
