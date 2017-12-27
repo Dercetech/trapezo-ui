@@ -13,7 +13,8 @@ import {LoginComponent} from "./public/login/login.component";
 import {RouterModule} from "@angular/router";
 import {DashboardComponent} from "./secure/dashboard/dashboard.component";
 import {AdminUserComponent} from "./secure/admin-user/admin-user.component";
-import {AddUserComponent} from "./secure/admin-user/add-user/add-user.component";
+import {UpsertUserComponent} from './secure/admin-user/upsert-user/upsert-user.component';
+
 
 @NgModule({
   declarations:[
@@ -22,7 +23,7 @@ import {AddUserComponent} from "./secure/admin-user/add-user/add-user.component"
     DashboardComponent,
 
     AdminUserComponent,
-    AddUserComponent
+    UpsertUserComponent
   ],
   imports:[
     BrowserModule,
@@ -45,7 +46,7 @@ import {AddUserComponent} from "./secure/admin-user/add-user/add-user.component"
     DashboardComponent,
 
     AdminUserComponent,
-    AddUserComponent
+    UpsertUserComponent
   ]
 })
 

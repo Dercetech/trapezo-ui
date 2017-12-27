@@ -20,12 +20,12 @@
     </mat-card-title>
 
     <form [formGroup]="userForm" (ngSubmit)="onSubmit($event)"
-          fxLayout="column" fxLayout.gt-xs="row" fxLayoutGap.gt-xs="32px">
+          fxLayout="column" fxLayout.gt-xs="row" fxLayoutWrap.gt-xs="wrap" fxLayoutGap.gt-xs="32px">
 
       <!-- Group 1 : username -->
       <div fxFlex="0 0 100%" fxFlex.sm="1 1 100%" fxFlex.gt-sm="1 1 300px" fxLayout="column">
         <mat-form-field>
-          <input tabindex="1" matInput formControlName="username"  placeholder="username" required>
+          <input tabindex="1" matInput formControlName="user"  placeholder="user name" required>
         </mat-form-field>
         <mat-form-field>
           <input tabindex="2" matInput formControlName="email" placeholder="email" required>
@@ -33,16 +33,25 @@
         <mat-form-field>
           <input tabindex="3" matInput formControlName="displayName"  placeholder="display name" required>
         </mat-form-field>
+
       </div>
 
       <!-- Group 2 : password -->
       <div fxFlex="0 0 100%" fxFlex.sm="1 1 100%" fxFlex.gt-sm="1 1 300px" fxLayout="column">
         <mat-form-field>
-          <input tabindex="4" matInput formControlName="password" type="password" placeholder="password" required>
+          <input tabindex="4" matInput formControlName="password" type="password" placeholder="password" [required]="isNewUser">
         </mat-form-field>
         <mat-form-field>
-          <input tabindex="5" matInput formControlName="password" type="password" placeholder="password confirm" required>
+          <input tabindex="5" matInput formControlName="password" type="password" placeholder="password confirm" [required]="isNewUser">
         </mat-form-field>
+        <p *ngIf="!isNewUser">
+          Leave blank to keep current password.
+        </p>
+      </div>
+
+      <!-- Group 3 : roles -->
+      <div fxFlex="0 0 100%" fxLayout="column">
+        <mat-checkbox formControlName="roleAdmin" required>admin</mat-checkbox>
       </div>
 
     </form>
@@ -52,8 +61,8 @@
   <mat-card fxHide fxShow.gt-xs>
     <div fxLayout="row" fxLayoutGap="16px" style="margin-top: 16px">
       <div fxFlex></div>
-      <button mat-button mat-raised-button routerLink="..">cancel</button>
-      <button mat-button mat-raised-button (click)="onSubmit()" [disabled]="isSubmitButtonDisabled()" color="primary">create</button>
+      <button mat-button mat-raised-button (click)="onCancel()">cancel</button>
+      <button mat-button mat-raised-button (click)="onSubmit()" [disabled]="isSubmitButtonDisabled()" color="primary">{{ isNewUser ? 'create user' : 'update user' }}</button>
     </div>
   </mat-card>
 

@@ -17,6 +17,7 @@ import {UsersService} from "./users/services/users.service";
 
 import {WrapperComponent} from "./wrapper/components/wrapper/wrapper.component";
 import {SecondaryToolbarComponent} from "./wrapper/components/secondary-toolbar/secondary-toolbar.component";
+import {CustomValidators} from './validators/custom-validators';
 
 @NgModule({
   declarations:[
@@ -43,16 +44,18 @@ import {SecondaryToolbarComponent} from "./wrapper/components/secondary-toolbar/
 
 export class CommonComponentsModule{
 
-  static forRoot():ModuleWithProviders{
+  static forRoot(): ModuleWithProviders{
     return{
-      ngModule:CommonComponentsModule,
-      providers:[
+      ngModule: CommonComponentsModule,
+      providers: [
         InterfaceService,
         SideMenuService,
         ToolbarService,
 
+        CustomValidators,
+
         UsersService
       ]
-    }
+    };
   }
 }

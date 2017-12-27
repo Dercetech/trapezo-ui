@@ -51,7 +51,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let entry of (usersService.users$ | async)">
+      <tr *ngFor="let entry of (usersService.users$ | async)" (click)="onUserRowClicked(entry)">
         <td>{{entry.user}}</td>
         <td>{{ formatRoles(entry) }}</td>
         <td></td>

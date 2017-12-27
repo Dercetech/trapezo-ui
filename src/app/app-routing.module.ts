@@ -8,7 +8,7 @@ import {WrapperComponent} from "../commons/wrapper/components/wrapper/wrapper.co
 import {LoginComponent} from "../pages/public/login/login.component";
 import {DashboardComponent} from "../pages/secure/dashboard/dashboard.component";
 import {AdminUserComponent} from "../pages/secure/admin-user/admin-user.component";
-import {AddUserComponent} from "../pages/secure/admin-user/add-user/add-user.component";
+import {UpsertUserComponent} from '../pages/secure/admin-user/upsert-user/upsert-user.component';
 
 const appRoutes: Routes = [
 
@@ -31,7 +31,8 @@ const appRoutes: Routes = [
         { path: '', pathMatch: 'full', redirectTo: 'users'},
         { path: 'users', data: {}, canActivate: [], children: [
           { path: '', pathMatch: 'full', component: AdminUserComponent },
-          { path: 'add-user', component: AddUserComponent }
+          { path: 'upsert', component: UpsertUserComponent },
+          { path: 'upsert/:user', component: UpsertUserComponent }
         ]},
       ]}
     ]

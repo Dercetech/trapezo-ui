@@ -14,10 +14,10 @@ export class AdminUserComponent implements OnInit, BroadcastTitle {
 
   title:string = 'users';
 
-  showLeftButton:boolean = false;
-  showRightButton:boolean = true;
+  showLeftButton: boolean = false;
+  showRightButton: boolean = true;
 
-  constructor(private router:Router,
+  constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               @Inject(ToolbarService) private toolbarService: ToolbarService,
               @Inject(UsersService) public usersService: UsersService) { }
@@ -26,7 +26,7 @@ export class AdminUserComponent implements OnInit, BroadcastTitle {
     this.usersService.reloadUsers();
   }
 
-  broadcastTitle():void{
+  broadcastTitle(): void {
     this.toolbarService.setTitle(this.title);
   }
 
@@ -34,11 +34,15 @@ export class AdminUserComponent implements OnInit, BroadcastTitle {
     return false;
   }
 
-  formatRoles(user:User){
+  formatRoles(user: User) {
     return (user && user.roles) ? user.roles.join(', ') : 'n/a';
   }
 
+  onUserRowClicked(user: User){
+    this.router.navigate(['upsert', user.user], { relativeTo: this.activatedRoute });
+  }
+
   onAdd(){
-    this.router.navigate(['add-user'], { relativeTo: this.activatedRoute });
+    this.router.navigate(['upsert'], { relativeTo: this.activatedRoute });
   }
 }
