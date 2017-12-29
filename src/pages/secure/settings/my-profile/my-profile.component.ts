@@ -11,8 +11,8 @@ export class MyProfileComponent implements OnInit, BroadcastTitle {
 
   title: string = 'my profile';
 
-  showLeftButton: boolean = false;
-  showRightButton: boolean = true;
+  showBackButton: boolean = false;
+  showActionButtons: boolean = false;
 
   constructor(@Inject(ToolbarService) private toolbarService: ToolbarService) { }
 

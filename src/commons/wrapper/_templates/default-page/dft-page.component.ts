@@ -13,8 +13,8 @@ export class DefaultPageComponent implements OnInit, BroadcastTitle {
 
   title: string = 'default page';
 
-  showLeftButton: boolean = false;
-  showRightButton: boolean = true;
+  showBackButton: boolean = false;
+  showActionButtons: boolean = true;
 
   constructor(@Inject(ToolbarService) private toolbarService: ToolbarService) { }
 
