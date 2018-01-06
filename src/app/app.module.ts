@@ -6,10 +6,10 @@ import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import {APP_CONFIG, APP_DI_CONFIG} from "./config/config.constants";
 
-import { AppComponent } from './app.component';
-import {DtFrameworkModule} from "../framework/dt-framework.module";
+import {AppComponent} from './app.component';
+import {TrapezoFrameworkServicesModule} from "../framework/trapezo-framework.module";
+import {CommonServicesModule} from '../commons/common-services.module';
 import {PagesModule} from "../pages/pages.module";
-import {CommonComponentsModule} from "../commons/common-components.module";
 
 @NgModule({
   declarations: [
@@ -26,10 +26,10 @@ import {CommonComponentsModule} from "../commons/common-components.module";
     AppRoutingModule,
 
     // Framework
-    DtFrameworkModule.forRoot(),
+    TrapezoFrameworkServicesModule.forRoot(),
 
     // Commons Module
-    CommonComponentsModule.forRoot(),
+    CommonServicesModule.forRoot(),
 
     // Pages
     PagesModule

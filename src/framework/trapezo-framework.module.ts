@@ -7,16 +7,24 @@ import {AuthService} from "./authentication/services/auth-service";
 import {AuthGuardService} from "./authentication/services/auth-guard.service";
 import {AuthAutoRedirectService} from "./authentication/services/auth-auto-redirect.service";
 
+@NgModule({
+  declarations: [],
+  imports: [],
+  exports: [],
+})
+export class TrapezoFrameworkComponentsModule {}
+
 
 @NgModule({
-
+  declarations: [],
+  imports: [],
+  exports: [],
 })
-
-export class DtFrameworkModule{
-  static forRoot():ModuleWithProviders{
-    return{
-      ngModule:DtFrameworkModule,
-      providers:[
+export class TrapezoFrameworkServicesModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: TrapezoFrameworkServicesModule,
+      providers: [
 
         // Token auth interceptor
         {
@@ -28,6 +36,6 @@ export class DtFrameworkModule{
         // Authentication & redirects
         AuthService, TokenService, AuthGuardService, AuthAutoRedirectService,
       ]
-    }
+    };
   }
 }
